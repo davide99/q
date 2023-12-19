@@ -22,7 +22,6 @@ endif()
 # Sources
 
 set(Q_HEADERS
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/fft/fft.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/fx/allpass.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/fx/biquad.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/fx/delay.hpp
@@ -46,20 +45,6 @@ set(Q_HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/include/support/midi.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/support/notes.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/support/phase.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/blackman_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/envelope_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/exponential_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/hamming_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/hann_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/linear_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/noise_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/pulse_synth.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/ramp_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/saw_synth.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/sin_cos_gen.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/sin_synth.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/square_synth.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/include/synth/triangle_synth.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/utility/antialiasing.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/utility/bitset.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/include/utility/bitstream_acf.hpp
