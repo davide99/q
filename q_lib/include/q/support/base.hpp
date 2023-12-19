@@ -10,7 +10,7 @@
 #include <cstdint>
 #include <cstring>
 #include <algorithm>
-#include <infra/support.hpp>
+#include "q/infra/support.hpp"
 #include <q/detail/fast_math.hpp>
 
 namespace cycfi::q

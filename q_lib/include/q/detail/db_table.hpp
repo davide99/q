@@ -8,7 +8,7 @@
 
 #include <cstdint>
 #include <q/support/base.hpp>
-#include <infra/assert.hpp>
+#include "q/infra/assert.hpp"
 
 namespace cycfi::q::detail
 {

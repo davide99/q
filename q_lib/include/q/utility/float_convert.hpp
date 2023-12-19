@@ -7,7 +7,7 @@
 #define CYCFI_Q_FLOAT_CONVERT_HPP_SEPTEMBER_20_2022
 
 #include <cstdint>
-#include <infra/assert.hpp>
+#include "q/infra/assert.hpp"
 
 namespace cycfi::q
 {

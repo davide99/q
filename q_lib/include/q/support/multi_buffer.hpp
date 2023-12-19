@@ -6,9 +6,9 @@
 #if !defined(CYCFI_Q_MULTI_BUFFER_OCTOBER_3_2018)
 #define CYCFI_Q_MULTI_BUFFER_OCTOBER_3_2018
 
-#include <infra/iterator_range.hpp>
-#include <infra/support.hpp>
-#include <infra/index_iterator.hpp>
+#include "q/infra/iterator_range.hpp"
+#include "q/infra/support.hpp"
+#include "q/infra/index_iterator.hpp"
 #include <q/support/basic_concepts.hpp>
 
 namespace cycfi::q

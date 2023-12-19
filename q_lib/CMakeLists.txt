@@ -82,6 +82,5 @@ source_group("Header Files\\q"
 add_library(libq INTERFACE)
 
 target_include_directories(libq INTERFACE include/)
-target_link_libraries(libq INTERFACE cycfi::infra)
 
 
