@@ -10,7 +10,6 @@
 #include <array>
 #include <q/support/base.hpp>
 #include <q/detail/init_store.hpp>
-#include <q/utility/interpolation.hpp>
 
 namespace cycfi::q
 {
@@ -25,7 +24,6 @@ namespace cycfi::q
       using value_type = T;
       using storage_type = Storage;
       using index_type = std::size_t;
-      using interpolation_type = sample_interpolation::none;
 
                         explicit ring_buffer();
                         explicit ring_buffer(std::size_t size);

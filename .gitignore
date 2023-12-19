@@ -4,6 +4,7 @@
 /_site/
 /cmake-build-debug/
 /cmake-build-release/
+/cmake-build-debug-coverage/
 /build/
 /x64/
 /.vs

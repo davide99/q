@@ -1,5 +1,6 @@
 #include <q/support/literals.hpp>
 #include <q/pitch/pitch_detector.hpp>
+#include <q/utility/float_convert.hpp>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -16,7 +17,7 @@ std::vector<float> read_file() {
     std::string line;
     std::vector<float> samples;
     while (std::getline(in, line)) {
-        samples.push_back((static_cast<float>(std::stoi(line)) / 65535.0f) * 2.0f - 1.0f);
+        samples.push_back(q::to_float<std::uint16_t, 65535>(std::stoi(line)));
     }
 
     in.close();
