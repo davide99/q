@@ -21,10 +21,6 @@ namespace cycfi::q
    {
    public:
 
-      using value_type = T;
-      using storage_type = Storage;
-      using index_type = std::size_t;
-
                         explicit ring_buffer();
                         explicit ring_buffer(std::size_t size);
                         ring_buffer(ring_buffer const& rhs) = default;
@@ -35,17 +31,8 @@ namespace cycfi::q
 
       std::size_t       size() const;
       void              push(T val);
-      T const&          front() const;
-      T&                front();
-      T const&          back() const;
-      T&                back();
       T const&          operator[](std::size_t index) const;
       T&                operator[](std::size_t index);
-      void              clear();
-      void              pop_front();
-
-      Storage&          store();
-      const Storage&    store() const;
 
    private:
 
@@ -90,35 +77,7 @@ namespace cycfi::q
       _data[_pos] = val;
    }
 
-   // Get the latest element.
-   template <typename T, typename Storage>
-   inline T const& ring_buffer<T, Storage>::front() const
-   {
-      return (*this)[0];
-   }
-
-   // Get the latest element.
-   template <typename T, typename Storage>
-   inline T& ring_buffer<T, Storage>::front()
-   {
-      return (*this)[0];
-   }
-
-   // Get the oldest element.
-   template <typename T, typename Storage>
-   inline T const& ring_buffer<T, Storage>::back() const
-   {
-      return (*this)[size()-1];
-   }
-
-   // Get the oldest element.
-   template <typename T, typename Storage>
-   inline T& ring_buffer<T, Storage>::back()
-   {
-      return (*this)[size()-1];
-   }
-
-   // Get the nth latest element (b[0] is latest element, b[1] is the second
+    // Get the nth latest element (b[0] is latest element, b[1] is the second
    // and b[size()-1] is the oldest.
    template <typename T, typename Storage>
    inline T const& ring_buffer<T, Storage>::operator[](std::size_t index) const
@@ -134,34 +93,6 @@ namespace cycfi::q
       return _data[(_pos + index) & _mask];
    }
 
-   // Clear the ring_buffer
-   template <typename T, typename Storage>
-   inline void ring_buffer<T, Storage>::clear()
-   {
-      for (auto& e : _data)
-         e = T();
-   }
-
-   // Remove the front element
-   template <typename T, typename Storage>
-   inline void ring_buffer<T, Storage>::pop_front()
-   {
-      ++_pos;
-   }
-
-   // Raw access to the data storage
-   template <typename T, typename Storage>
-   inline Storage& ring_buffer<T, Storage>::store()
-   {
-      return _data;
-   }
-
-   // Raw access to the data storage
-   template <typename T, typename Storage>
-   inline const Storage& ring_buffer<T, Storage>::store() const
-   {
-      return _data;
-   }
 }
 
 #endif

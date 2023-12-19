@@ -13,22 +13,6 @@ namespace cycfi::q::concepts
 {
    template <typename T>
    concept Arithmetic = std::integral<T> || std::floating_point<T>;
-
-   template <typename T>
-   concept IndexableContainer = requires(T& x, std::size_t i)
-   {
-      { x[i] } -> std::convertible_to<typename T::value_type>;
-      { x.size() } -> std::convertible_to<std::size_t>;
-   };
-
-   template <typename T>
-   concept RandomAccessIteratable =
-      std::random_access_iterator<typename T::iterator> &&
-      requires(T& c)
-   {
-      { c.begin() } -> std::same_as<typename T::iterator>;
-      { c.end() } -> std::same_as<typename T::iterator>;
-   };
 }
 
 #endif

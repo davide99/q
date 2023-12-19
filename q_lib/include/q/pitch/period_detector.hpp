@@ -9,7 +9,6 @@
 #include <q/utility/bitset.hpp>
 #include <q/utility/zero_crossing_collector.hpp>
 #include <q/utility/bitstream_acf.hpp>
-#include <q/fx/envelope.hpp>
 #include <cmath>
 #include <stdexcept>
 
@@ -41,16 +40,12 @@ namespace cycfi::q
                               period_detector(period_detector&& rhs) = default;
 
       bool                    operator()(float s);
-      bool                    operator()() const;
 
       bool                    is_ready() const        { return _zc.is_ready(); }
       std::size_t const       minimum_period() const  { return _min_period; }
-      bitset<> const&         bits() const            { return _bits; }
-      zero_crossing_collector const&    edges() const           { return _zc; }
       float                   predict_period() const;
 
       info const&             fundamental() const     { return _fundamental; }
-      float                   harmonic(std::size_t index) const;
 
    private:
 
@@ -338,30 +333,6 @@ namespace cycfi::q
          return true;
       }
       return false;
-   }
-
-   inline float period_detector::harmonic(std::size_t index) const
-   {
-      if (index > 0)
-      {
-         if (index == 1)
-            return _fundamental._periodicity;
-
-         auto target_period = _fundamental._period / index;
-         if (target_period >= _min_period && target_period < _mid_point)
-         {
-            bitstream_acf<> ac{ _bits };
-            auto count = ac(std::round(target_period));
-            float periodicity = 1.0f - (count * _weight);
-            return periodicity;
-         }
-      }
-      return 0.0f;
-   }
-
-   inline bool period_detector::operator()() const
-   {
-      return _zc();
    }
 
    inline float period_detector::predict_period() const

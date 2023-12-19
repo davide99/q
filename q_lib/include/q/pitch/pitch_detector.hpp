@@ -8,7 +8,6 @@
 
 #include <q/support/literals.hpp>
 #include <q/pitch/pitch_detector.hpp>
-#include <q/fx/moving_average.hpp>
 #include <q/fx/median.hpp>
 #include <q/pitch/period_detector.hpp>
 #include <array>
@@ -37,22 +36,12 @@ namespace cycfi::q
       bool                    operator()(float s);
       float                   get_frequency() const         { return _frequency; }
       float                   predict_frequency(bool init = false);
-      bool                    is_note_shift() const;
-      std::size_t             frames_after_shift() const    { return _frames_after_shift; }
-      float                   periodicity() const;
-      void                    reset()                       { _frequency = 0.0f; }
-
-      bitset<> const&         bits() const                  { return _pd.bits(); }
-      zero_crossing_collector const&    edges() const                 { return _pd.edges(); }
-      period_detector const&  get_period_detector() const   { return _pd; }
 
    private:
 
       float                   calculate_frequency() const;
       float                   bias(float current, float incoming, bool& shift);
       void                    bias(float incoming);
-
-      using exp_moving_average_type = exp_moving_average<2>;
 
       period_detector         _pd;
       float                   _frequency;
@@ -217,17 +206,7 @@ namespace cycfi::q
       return 0.0f;
    }
 
-   inline float pitch_detector::periodicity() const
-   {
-      return _pd.fundamental()._periodicity;
-   }
-
-   inline bool pitch_detector::is_note_shift() const
-   {
-      return _frames_after_shift == 0;
-   }
-
-   inline float pitch_detector::predict_frequency(bool init)
+    inline float pitch_detector::predict_frequency(bool init)
    {
       auto period = _pd.predict_period();
       if (period < _pd.minimum_period())

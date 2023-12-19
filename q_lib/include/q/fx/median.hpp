@@ -25,7 +25,7 @@ namespace cycfi::q
 
    struct median3
    {
-      median3(float median_ = 0.0f)
+      explicit median3(float median_ = 0.0f)
        : _median(median_)
        , b(median_)
        , c(median_)
@@ -37,17 +37,6 @@ namespace cycfi::q
          c = b;
          b = a;
          return _median;
-      }
-
-      float operator()() const
-      {
-         return _median;
-      }
-
-      median3& operator=(float median_)
-      {
-         b = c = _median = median_;
-         return *this;
       }
 
       float _median = 0.0f;

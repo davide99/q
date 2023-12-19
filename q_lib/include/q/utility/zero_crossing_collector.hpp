@@ -68,7 +68,6 @@ namespace cycfi::q
          void              update_peak(float s, std::size_t frame);
          std::size_t       period(info const& next) const;
          float             fractional_period(info const& next) const;
-         int               width() const;
          bool              similar(info const& next) const;
 
          crossing_data     _crossing;
@@ -78,14 +77,12 @@ namespace cycfi::q
          float             _width = 0.0f;
       };
 
-                           zero_crossing_collector(decibel hysteresis, duration window, float sps);
                            zero_crossing_collector(decibel hysteresis, std::uint32_t window);
                            zero_crossing_collector(zero_crossing_collector const& rhs) = default;
                            zero_crossing_collector(zero_crossing_collector&& rhs) = default;
 
       std::size_t          num_edges() const;
       std::size_t          capacity() const;
-      std::size_t          frame() const;
       std::size_t          window_size() const;
       bool                 is_ready() const;
       float                peak_pulse() const;
@@ -128,12 +125,7 @@ namespace cycfi::q
       }
    }
 
-   inline zero_crossing_collector::zero_crossing_collector(decibel hysteresis, duration window, float sps)
-    : zero_crossing_collector{hysteresis, std::uint32_t(as_double(window) * sps)}
-   {
-   }
-
-   inline zero_crossing_collector::zero_crossing_collector(decibel hysteresis, std::uint32_t window)
+    inline zero_crossing_collector::zero_crossing_collector(decibel hysteresis, std::uint32_t window)
     : _hysteresis(-lin_float(hysteresis))
     , _window_size(detail::adjust_window_size(window) * bitset<>::value_size)
     , _info(_window_size / 2)
@@ -189,12 +181,7 @@ namespace cycfi::q
       return _info.size();
    }
 
-   inline std::size_t zero_crossing_collector::frame() const
-   {
-      return _frame;
-   }
-
-   inline std::size_t zero_crossing_collector::window_size() const
+    inline std::size_t zero_crossing_collector::window_size() const
    {
       return _window_size;
    }

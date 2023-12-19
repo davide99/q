@@ -17,11 +17,6 @@ namespace cycfi::q
       return q::period{1.0 / rep};
    }
 
-   constexpr double as_double(frequency f)
-   {
-      return f.rep;
-   }
-
    constexpr float as_float(frequency f)
    {
       return f.rep;

@@ -31,8 +31,6 @@ namespace cycfi::q
    class bitset
    {
    public:
-
-      using value_type = T;
       using vector_type = std::vector<T>;
 
       static_assert(std::is_unsigned<T>::value, "T must be unsigned");
@@ -48,9 +46,8 @@ namespace cycfi::q
 
       std::size_t    size() const;
       void           clear();
-      void           set(std::size_t i, bool val);
+
       void           set(std::size_t i, std::size_t n, bool val);
-      bool           get(std::size_t i) const;
 
       T*             data();
       T const*       data() const;
@@ -82,30 +79,7 @@ namespace cycfi::q
       std::fill(_bits.begin(), _bits.end(), 0);
    }
 
-   template <typename T>
-   inline void bitset<T>::set(std::size_t i, bool val)
-   {
-      // Check that we don't get past the storage
-      if (i > size())
-         return;
-
-      auto mask = 1 << (i % value_size);
-      auto& ref = _bits[i / value_size];
-      ref ^= (-T(val) ^ ref) & mask;
-   }
-
-   template <typename T>
-   inline bool bitset<T>::get(std::size_t i) const
-   {
-      // Check we don't get past the storage
-      if (i > size())
-         return 0;
-
-      auto mask = one << (i % value_size);
-      return (_bits[i / value_size] & mask) != 0;
-   }
-
-   template <typename T>
+    template <typename T>
    inline void bitset<T>::set(std::size_t i, std::size_t n, bool val)
    {
       // Check that the index (i) does not get past size

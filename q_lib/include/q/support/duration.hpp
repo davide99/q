@@ -14,24 +14,14 @@
 namespace cycfi::q
 {
    ////////////////////////////////////////////////////////////////////////////
-   struct duration_unit;
 
    struct duration : unit<double, duration>
    {
       using base_type = unit<double, duration>;
       using base_type::base_type;
-      using unit_type = duration_unit;
    };
 
-   // Free functions
-   constexpr double  as_double(duration d);
    constexpr float   as_float(duration d);
-
-   ////////////////////////////////////////////////////////////////////////////
-   constexpr double as_double(duration d)
-   {
-      return d.rep;
-   }
 
    constexpr float as_float(duration d)
    {

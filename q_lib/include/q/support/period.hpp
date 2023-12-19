@@ -17,21 +17,7 @@ namespace cycfi::q
    struct period : duration
    {
       using duration::duration;
-
-      constexpr explicit   period(duration d);
-      constexpr explicit   period(frequency f);
    };
-
-   ////////////////////////////////////////////////////////////////////////////
-   constexpr period::period(duration d)
-    : duration(d)
-   {
-   }
-
-   constexpr period::period(frequency f)
-    : duration(1.0 / f.rep)
-   {
-   }
 }
 
 #endif

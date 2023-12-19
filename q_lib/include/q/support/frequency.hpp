@@ -25,7 +25,6 @@ namespace cycfi::q
    };
 
    // Free functions
-   constexpr double  as_double(frequency f);
    constexpr float   as_float(frequency f);
 }
 
