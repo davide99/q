@@ -97,11 +97,5 @@ namespace cycfi
    {
       return (m < n)? smallest_pow2(n, m << 1) : m;
    }
-
-   template <typename T>
-   constexpr bool is_pow2(T n)
-   {
-      return (n & (n - 1)) == 0;
-   }
 }
 #endif

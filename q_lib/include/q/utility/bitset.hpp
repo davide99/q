@@ -49,7 +49,6 @@ namespace cycfi::q
 
       void           set(std::size_t i, std::size_t n, bool val);
 
-      T*             data();
       T const*       data() const;
 
    private:
@@ -149,12 +148,6 @@ namespace cycfi::q
          else
             *p &= ~mask;
       }
-   }
-
-   template <typename T>
-   inline T* bitset<T>::data()
-   {
-      return _bits.data();
    }
 
    template <typename T>

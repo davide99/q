@@ -20,8 +20,6 @@ namespace cycfi::q
    class ring_buffer
    {
    public:
-
-                        explicit ring_buffer();
                         explicit ring_buffer(std::size_t size);
                         ring_buffer(ring_buffer const& rhs) = default;
                         ring_buffer(ring_buffer&& rhs) = default;
@@ -44,14 +42,6 @@ namespace cycfi::q
    ////////////////////////////////////////////////////////////////////////////
    // Implementation
    ////////////////////////////////////////////////////////////////////////////
-   template <typename T, typename Storage>
-   inline ring_buffer<T, Storage>::ring_buffer()
-    : _pos(0)
-   {
-      static_assert(!detail::resizable_container<Storage>::value,
-         "Error: Not default constructible for resizable buffers");
-      detail::init_store(_data, _mask);
-   }
 
    template <typename T, typename Storage>
    inline ring_buffer<T, Storage>::ring_buffer(std::size_t size)
