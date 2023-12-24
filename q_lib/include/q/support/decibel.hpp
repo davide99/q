@@ -7,7 +7,6 @@
 #define CYCFI_Q_DECIBEL_HPP_FEBRUARY_21_2018
 
 #include <cmath>
-#include <q/support/unit.hpp>
 
 namespace cycfi::q {
     constexpr float lin_float(float db) {
