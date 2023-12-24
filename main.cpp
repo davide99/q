@@ -29,7 +29,7 @@ int main() {
     constexpr auto lowest_freq = 60.0_Hz;
     constexpr auto highest_freq = 500.0_Hz;
 
-    q::pitch_detector pd(lowest_freq, highest_freq, sps, -45_dB);
+    q::pitch_detector pd(lowest_freq, highest_freq, sps, -45.0f);
 
     std::vector<float> x = read_file();
 

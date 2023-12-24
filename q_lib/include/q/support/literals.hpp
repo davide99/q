@@ -10,7 +10,6 @@
 #include <cmath>
 #include <q/support/base.hpp>
 #include <q/support/frequency.hpp>
-#include <q/support/decibel.hpp>
 
 namespace cycfi::q
 {
@@ -85,16 +84,6 @@ namespace cycfi::q
       constexpr duration operator ""_us(unsigned long long int val)
       {
          return duration{double(val * 1e-6)};
-      }
-
-      constexpr decibel operator ""_dB(unsigned long long int val)
-      {
-         return {double(val), direct_unit};
-      }
-
-      constexpr decibel operator ""_dB(long double val)
-      {
-         return {double(val), direct_unit};
       }
 
       constexpr long double operator ""_pi(long double val)

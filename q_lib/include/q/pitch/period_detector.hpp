@@ -33,7 +33,7 @@ namespace cycfi::q
                                  frequency lowest_freq
                                , frequency highest_freq
                                , float sps
-                               , decibel hysteresis
+                               , float hysteresis
                               );
 
                               period_detector(period_detector const& rhs) = default;
@@ -73,7 +73,7 @@ namespace cycfi::q
       frequency lowest_freq
     , frequency highest_freq
     , float sps
-    , decibel hysteresis
+    , float hysteresis
    )
     : _zc(hysteresis, as_float(lowest_freq.period() * 2) * sps)
     , _min_period(as_float(highest_freq.period()) * sps)

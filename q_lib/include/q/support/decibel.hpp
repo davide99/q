@@ -7,7 +7,6 @@
 #define CYCFI_Q_DECIBEL_HPP_FEBRUARY_21_2018
 
 #include <cmath>
-#include <q/detail/db_table.hpp>
 #include <q/support/unit.hpp>
 
 namespace cycfi::q {
@@ -38,10 +37,10 @@ namespace cycfi::q {
         // error to alert users upgrading to this library version.
     };;
 
-    constexpr float lin_float(decibel db);
+    constexpr float lin_float(float db);
 
-    constexpr float lin_float(decibel db) {
-        return detail::db2a(db.rep);
+    constexpr float lin_float(float db) {
+        return powf(10, db / 20.0f);
     }
 }
 

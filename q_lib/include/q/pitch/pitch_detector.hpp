@@ -27,7 +27,7 @@ namespace cycfi::q
                                  frequency lowest_freq
                                , frequency highest_freq
                                , float sps
-                               , decibel hysteresis
+                               , float hysteresis
                               );
 
                               pitch_detector(pitch_detector const& rhs) = default;
@@ -58,7 +58,7 @@ namespace cycfi::q
        q::frequency lowest_freq
      , q::frequency highest_freq
      , float sps
-     , decibel hysteresis
+     , float hysteresis
    )
      : _pd{ lowest_freq, highest_freq, sps, hysteresis }
      , _frequency{ 0.0f }
