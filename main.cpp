@@ -8,7 +8,7 @@
 namespace q = cycfi::q;
 using namespace q::literals;
 
-constexpr auto samples_file = "C:/Users/dav.pisano/Desktop/Q/data/samples.csv";
+constexpr auto samples_file = "../data/samples.csv";
 
 std::vector<float> read_file() {
     std::ifstream in(samples_file);
