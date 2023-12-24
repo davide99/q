@@ -1,4 +1,3 @@
-#include <q/support/literals.hpp>
 #include <q/pitch/pitch_detector.hpp>
 #include <q/utility/float_convert.hpp>
 #include <iostream>
@@ -6,7 +5,6 @@
 #include <vector>
 
 namespace q = cycfi::q;
-using namespace q::literals;
 
 constexpr auto samples_file = "../data/samples.csv";
 
@@ -26,8 +24,8 @@ std::vector<float> read_file() {
 
 int main() {
     constexpr auto sps = 44100;
-    constexpr auto lowest_freq = 60.0_Hz;
-    constexpr auto highest_freq = 500.0_Hz;
+    constexpr auto lowest_freq = 60.0f;
+    constexpr auto highest_freq = 500.0f;
 
     q::pitch_detector pd(lowest_freq, highest_freq, sps, -45.0f);
 

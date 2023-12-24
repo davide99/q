@@ -30,8 +30,8 @@ namespace cycfi::q
       };
 
                               period_detector(
-                                 frequency lowest_freq
-                               , frequency highest_freq
+                                 float lowest_freq
+                               , float highest_freq
                                , float sps
                                , float hysteresis
                               );
@@ -70,14 +70,14 @@ namespace cycfi::q
    // Implementation
    ////////////////////////////////////////////////////////////////////////////
    inline period_detector::period_detector(
-      frequency lowest_freq
-    , frequency highest_freq
+      float lowest_freq
+    , float highest_freq
     , float sps
     , float hysteresis
    )
-    : _zc(hysteresis, as_float(lowest_freq.period() * 2) * sps)
-    , _min_period(as_float(highest_freq.period()) * sps)
-    , _range(as_float(highest_freq) / as_float(lowest_freq))
+    : _zc(hysteresis, 2.0f * sps / lowest_freq)
+    , _min_period(sps / highest_freq)
+    , _range(highest_freq / lowest_freq)
     , _bits(_zc.window_size())
     , _weight(2.0 / _zc.window_size())
     , _mid_point(_zc.window_size() / 2)

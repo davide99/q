@@ -6,7 +6,6 @@
 #if !defined(CYCFI_Q_PITCH_DETECTOR_HPP_MARCH_12_2018)
 #define CYCFI_Q_PITCH_DETECTOR_HPP_MARCH_12_2018
 
-#include <q/support/literals.hpp>
 #include <q/pitch/pitch_detector.hpp>
 #include <q/fx/median.hpp>
 #include <q/pitch/period_detector.hpp>
@@ -24,8 +23,8 @@ namespace cycfi::q
       static constexpr float  min_periodicity = 0.8f;
 
                               pitch_detector(
-                                 frequency lowest_freq
-                               , frequency highest_freq
+                                 float lowest_freq
+                               , float highest_freq
                                , float sps
                                , float hysteresis
                               );
@@ -55,8 +54,8 @@ namespace cycfi::q
    // Implementation
    ////////////////////////////////////////////////////////////////////////////
    inline pitch_detector::pitch_detector(
-       q::frequency lowest_freq
-     , q::frequency highest_freq
+       float lowest_freq
+     , float highest_freq
      , float sps
      , float hysteresis
    )
