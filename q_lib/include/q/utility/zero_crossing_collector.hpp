@@ -10,7 +10,6 @@
 #include <q/utility/bitset.hpp>
 #include <q/utility/ring_buffer.hpp>
 #include <q/support/decibel.hpp>
-#include "q/infra/assert.hpp"
 #include <cmath>
 
 namespace cycfi::q
@@ -140,7 +139,7 @@ namespace cycfi::q
 
    inline std::size_t zero_crossing_collector::info::period(info const& next) const
    {
-      CYCFI_ASSERT(_leading_edge <= next._leading_edge, "Invalid order.");
+      assert(_leading_edge <= next._leading_edge); //Invalid order
       return next._leading_edge - _leading_edge;
    }
 
@@ -152,7 +151,7 @@ namespace cycfi::q
 
    inline float zero_crossing_collector::info::fractional_period(info const& next) const
    {
-      CYCFI_ASSERT(_leading_edge <= next._leading_edge, "Invalid order.");
+      assert(_leading_edge <= next._leading_edge); //Invalid order
 
       // Get the start edge
       auto prev1 = _crossing.first;
@@ -225,7 +224,7 @@ namespace cycfi::q
       {
          if (!_state)
          {
-            CYCFI_ASSERT(_num_edges < _info.size(), "Bad _size");
+            assert(_num_edges < _info.size()); //Bad _size
             _info.push({ { _prev, s }, s, int(_frame) });
             ++_num_edges;
             _state = 1;

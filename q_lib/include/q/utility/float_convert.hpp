@@ -7,7 +7,6 @@
 #define CYCFI_Q_FLOAT_CONVERT_HPP_SEPTEMBER_20_2022
 
 #include <cstdint>
-#include "q/infra/assert.hpp"
 
 namespace cycfi::q
 {
@@ -21,8 +20,8 @@ namespace cycfi::q
    template <typename T, int resolution>
    constexpr float to_float(T s)
    {
-      CYCFI_ASSERT(((s >= 0 || s < resolution)), "Invalid range");
-      constexpr float half_resolution = resolution / 2;
+      assert(s >= 0 || s < resolution); //Invalid range
+      constexpr float half_resolution = resolution / 2.0f;
       return (s / half_resolution) - 1.0f;
    }
 }

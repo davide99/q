@@ -271,7 +271,7 @@ namespace cycfi::q
    {
       auto threshold = _zc.peak_pulse() * pulse_threshold;
 
-      CYCFI_ASSERT(_zc.num_edges() > 1, "Not enough edges.");
+      assert(_zc.num_edges() > 1); //Not enough edges
 
       bitstream_acf<> ac{ _bits };
       detail::sub_collector collect{_zc, _period_diff_threshold, _range };
